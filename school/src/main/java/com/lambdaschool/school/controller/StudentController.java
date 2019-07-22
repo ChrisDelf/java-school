@@ -2,6 +2,8 @@ package com.lambdaschool.school.controller;
 
 import com.lambdaschool.school.model.Student;
 import com.lambdaschool.school.service.StudentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,13 +19,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/students")
-public class StudentController extends ControllerLoggerExtension {
+public class StudentController{
 
 
     @Autowired
     private StudentService studentService;
 
     // Please note there is no way to add students to course yet!
+    private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
+
+    private void Log(HttpServletRequest req){
+        logger.info(req.getMethod() + " " + req.getRequestURI() + " Accessed");
+    }
 
     @GetMapping(value = "/students", produces = {"application/json"})
     public ResponseEntity<?> listAllStudents(HttpServletRequest req)

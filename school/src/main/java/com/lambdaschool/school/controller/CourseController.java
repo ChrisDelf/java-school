@@ -3,6 +3,8 @@ package com.lambdaschool.school.controller;
 import com.lambdaschool.school.model.Course;
 import com.lambdaschool.school.service.CourseService;
 import com.lambdaschool.school.view.CountStudentsInCourses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +15,13 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping(value = "/courses")
-public class CourseController extends ControllerLoggerExtension
+public class CourseController
 {
+    private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
+
+    private void Log(HttpServletRequest req){
+        logger.info(req.getMethod() + " " + req.getRequestURI() + " Accessed");
+    }
     @Autowired
     private CourseService courseService;
 
