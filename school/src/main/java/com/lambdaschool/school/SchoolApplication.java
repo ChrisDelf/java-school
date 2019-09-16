@@ -20,8 +20,8 @@ public class SchoolApplication
 
         // we have to disable dispatcherServlet , we have to find the bean to disable it
         // Spring cannot find the bean it would happily run anyways, so make sure you have it spelt correctly.
-        DispatcherServlet dispatcherServlet = (DispatcherServlet) ctx.getBean("dispatcherServlet");
-        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);// we are setting it so we handle it ourselves.
+        DispatcherServlet dispatcher = (DispatcherServlet)ctx.getBean("dispatcherServlet");
+        dispatcher.setThrowExceptionIfNoHandlerFound(true);// we are setting it so we handle it ourselves.
 
 
     }
