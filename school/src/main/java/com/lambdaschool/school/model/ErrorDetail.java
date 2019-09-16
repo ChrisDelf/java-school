@@ -2,7 +2,7 @@ package com.lambdaschool.authenticatedusers.model;
 
 // adapted from https://tools.ietf.org/html/rfc7807
 
-//import com.lambdaschool.authenticatedusers.exceptions.ValidationError;
+import com.lambdaschool.school.exceptions.ValidationError;
 import org.springframework.boot.context.properties.bind.validation.ValidationErrors;
 
 import java.text.SimpleDateFormat;
@@ -19,7 +19,7 @@ public class ErrorDetail
     private String timestamp;
     private String developerMessage;
     // creating a list of error messages to the user, HashMap print nicely in json
-//    private Map<String, List<ValidationError>> errors = new HashMap<String, List<ValidationError>>();
+   private Map<String, List<ValidationError>> errors = new HashMap<String, List<ValidationError>>();
 
     public String getTitle()
     {
@@ -73,13 +73,13 @@ public class ErrorDetail
         this.developerMessage = developerMessage;
     }
 
-//    public Map<String, List<ValidationError>> getErrors()
-//    {
-//        return errors;
-//    }
-//
-//    public void setErrors(Map<String, List<ValidationError>> errors)
-//    {
-//        this.errors = errors;
-//    }
+    public Map<String, List<ValidationError>> getErrors()
+    {
+        return errors;
+    }
+
+    public void setErrors(Map<String, List<ValidationError>> errors)
+    {
+        this.errors = errors;
+    }
 }
